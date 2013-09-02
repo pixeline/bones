@@ -45,6 +45,14 @@ require_once('library/custom-post-type.php'); // you can disable this if you lik
 */
 // require_once('library/translation/translation.php'); // this comes turned off by default
 
+/*
+5. library/admin-ui-tweaks.php
+	- a collection of functions that allow to customize the Wordpress Admin interface.
+*/
+// require_once('library/admin-ui-tweaks.php'); // this comes turned off by default
+
+
+
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
@@ -152,12 +160,12 @@ function bones_comments($comment, $args, $depth) {
 /************* SEARCH FORM LAYOUT *****************/
 
 // Search Form
-function bones_wpsearch($form) {
-	$form = '<form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '" >
-	<label class="screen-reader-text" for="s">' . __('Search for:', 'bonestheme') . '</label>
-	<input type="text" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Search the Site...','bonestheme').'" />
-	<input type="submit" id="searchsubmit" value="'. esc_attr__('Search') .'" />
-	</form>';
+function bones_wpsearch() {
+	$form = '<form role="search" method="get" name="searchform" id="searchform" action="' . home_url( '/' ) . '">
+    	<label for="s"  class="screen-reader-text">'.__('search the stock','bonestheme').'</label>
+    	<input name="s" id="s" value="' . get_search_query() . '" type="text" required="required" autocapitalize="off" autocorrect="off" placeholder="'.__('Search the Site...','bonestheme').'">
+    	<input type="submit" class="button" value="'.__('search','bonestheme').'">
+    	</form>';
 	return $form;
 } // don't remove this bracket!
 
